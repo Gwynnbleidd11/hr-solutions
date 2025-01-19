@@ -7,11 +7,14 @@ import java.time.LocalDate;
 @Builder
 public record EmployeeDto(
         Long id,
-        String name,
-        String surname,
-        String mail,
+        String firstName,
+        String lastName,
+        LocalDate hireDate,
         LocalDate birthDate,
-        String login,
+        String department,
+        String role,
+        String email,
+        String userName,
         String password
 ) {
 }

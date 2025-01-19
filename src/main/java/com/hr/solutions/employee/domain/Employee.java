@@ -10,16 +10,45 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "employees")
+@Entity
+@Table(name = "employees", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String surname;
-    private String mail;
+
+    @Column(name = "first_name", nullable = false, length = 50)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 50)
+    private String lastName;
+
+    @Column(name = "hire_date", nullable = false)
+    private LocalDate hireDate;
+
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
-    private String login;
+
+    @Column(name = "department", length = 100)
+    private String department;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Role role;
+
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
+
+    @Column(nullable = false, unique = true, length = 100)
+    private String userName;
+
+    @Column(nullable = false, length = 255)
     private String password;
+
+    public enum Role {
+        EMPLOYEE,
+        MANAGER,
+        ADMIN
+    }
 }

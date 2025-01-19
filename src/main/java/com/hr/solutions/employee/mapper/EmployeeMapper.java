@@ -14,11 +14,14 @@ public class EmployeeMapper {
     public Employee mapToEmployee(final EmployeeDto employeeDto) {
         return Employee.builder()
                 .id(employeeDto.id())
-                .name(employeeDto.name())
-                .surname(employeeDto.surname())
-                .mail(employeeDto.mail())
+                .firstName(employeeDto.firstName())
+                .lastName(employeeDto.lastName())
+                .hireDate(employeeDto.hireDate())
                 .birthDate(employeeDto.birthDate())
-                .login(employeeDto.login())
+                .department(employeeDto.department())
+                .role(Employee.Role.valueOf(employeeDto.role()))
+                .email(employeeDto.email())
+                .userName(employeeDto.userName())
                 .password(employeeDto.password())
                 .build();
     }
@@ -26,11 +29,14 @@ public class EmployeeMapper {
     public EmployeeDto mapToEmployeeDto(final Employee employee) {
         return EmployeeDto.builder()
                 .id(employee.getId())
-                .name(employee.getName())
-                .surname(employee.getSurname())
-                .mail(employee.getMail())
+                .firstName(employee.getFirstName())
+                .lastName(employee.getLastName())
+                .hireDate(employee.getHireDate())
                 .birthDate(employee.getBirthDate())
-                .login(employee.getLogin())
+                .department(employee.getDepartment())
+                .role(employee.getRole().toString())
+                .email(employee.getEmail())
+                .userName(employee.getUserName())
                 .password(employee.getPassword())
                 .build();
     }
